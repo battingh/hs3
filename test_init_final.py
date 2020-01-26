@@ -140,22 +140,22 @@ def init():
 	fb = []
 	#print("test")
 	
-	inidata = repo.get_contents("test_setting1.ini")
+	inidata = repo.get_contents("test_setting.ini")
 	file_data1 = base64.b64decode(inidata.content)
 	file_data1 = file_data1.decode('utf-8')
 	inputData = file_data1.split('\n')
 
-	command_inidata = repo.get_contents("command1.ini")
+	command_inidata = repo.get_contents("command.ini")
 	file_data4 = base64.b64decode(command_inidata.content)
 	file_data4 = file_data4.decode('utf-8')
 	command_inputData = file_data4.split('\n')
 	
-	boss_inidata = repo.get_contents("boss1.ini")
+	boss_inidata = repo.get_contents("boss.ini")
 	file_data3 = base64.b64decode(boss_inidata.content)
 	file_data3 = file_data3.decode('utf-8')
 	boss_inputData = file_data3.split('\n')
 
-	fixed_inidata = repo.get_contents("fixed_boss1.ini")
+	fixed_inidata = repo.get_contents("fixed_boss.ini")
 	file_data2 = base64.b64decode(fixed_inidata.content)
 	file_data2 = file_data2.decode('utf-8')
 	fixed_inputData = file_data2.split('\n')
@@ -719,7 +719,7 @@ async def FixedBossDateSave():
 		tmpSTR = FixedBossDateData[j][:pos-1] + '\r\n'
 		FixedBossDateDataSTR += tmpSTR
 
-	contents = repo.get_contents("fixed_boss1.ini")
+	contents = repo.get_contents("fixed_boss.ini")
 	repo.update_file(contents.path, "bossDB", FixedBossDateDataSTR, contents.sha)
 
 #음성채널 입장
@@ -844,7 +844,7 @@ async def on_ready():
 
 	# 디스코드에는 현재 본인이 어떤 게임을 플레이하는지 보여주는 기능이 있습니다.
 	# 이 기능을 사용하여 봇의 상태를 간단하게 출력해줄 수 있습니다.
-	await client.change_presence(status=discord.Status.dnd, activity=discord.Game(name="~메뉴", type=1), afk=False)
+	await client.change_presence(status=discord.Status.dnd, activity=discord.Game(name="!메뉴", type=1), afk=False)
 
 while True:
 	# 봇이 새로운 메시지를 수신했을때 동작되는 코드입니다.
@@ -904,7 +904,7 @@ while True:
 		if chflg == 0 :
 			channel = int(msg.channel.id) #channel이라는 변수에는 메시지를 받은 채널의 ID를 담습니다
 			if basicSetting[7] == "":
-				inidata_textCH = repo.get_contents("test_setting1.ini")
+				inidata_textCH = repo.get_contents("test_setting.ini")
 				file_data_textCH = base64.b64decode(inidata_textCH.content)
 				file_data_textCH = file_data_textCH.decode('utf-8')
 				inputData_textCH = file_data_textCH.split('\n')
@@ -919,7 +919,7 @@ while True:
 				
 				#print (result_textCH)
 				
-				contents = repo.get_contents("test_setting1.ini")
+				contents = repo.get_contents("test_setting.ini")
 				repo.update_file(contents.path, "test_setting", result_textCH, contents.sha)
 
 			print('< 텍스트채널 [' + client.get_channel(channel).name + '] 접속완료>')
@@ -1063,7 +1063,7 @@ while True:
 					if  channel_name[i] == str(tmp_sayMessage1[len(command[3])+1:]):
 						channel = int(channel_id[i])
 						
-				inidata_textCH = repo.get_contents("test_setting1.ini")
+				inidata_textCH = repo.get_contents("test_setting.ini")
 				file_data_textCH = base64.b64decode(inidata_textCH.content)
 				file_data_textCH = file_data_textCH.decode('utf-8')
 				inputData_textCH = file_data_textCH.split('\n')
@@ -1075,7 +1075,7 @@ while True:
 				
 				result_textCH = '\n'.join(inputData_textCH)
 
-				contents = repo.get_contents("test_setting1.ini")
+				contents = repo.get_contents("test_setting.ini")
 				repo.update_file(contents.path, "test_setting", result_textCH, contents.sha)
 					
 				await client.get_channel(channel).send('< ' + client.get_channel(channel).name + ' 이동완료>', tts=False)
@@ -1435,7 +1435,7 @@ while True:
 					voice_channel = message.author.voice.channel
 
 					if basicSetting[6] == "":
-						inidata_voiceCH = repo.get_contents("test_setting1.ini")
+						inidata_voiceCH = repo.get_contents("test_setting.ini")
 						file_data_voiceCH = base64.b64decode(inidata_voiceCH.content)
 						file_data_voiceCH = file_data_voiceCH.decode('utf-8')
 						inputData_voiceCH = file_data_voiceCH.split('\n')
@@ -1447,11 +1447,11 @@ while True:
 
 						result_voiceCH = '\n'.join(inputData_voiceCH)
 
-						contents = repo.get_contents("test_setting1.ini")
+						contents = repo.get_contents("test_setting.ini")
 						repo.update_file(contents.path, "test_setting", result_voiceCH, contents.sha)
 
 					elif basicSetting[6] != int(voice_channel.id):
-						inidata_voiceCH = repo.get_contents("test_setting1.ini")
+						inidata_voiceCH = repo.get_contents("test_setting.ini")
 						file_data_voiceCH = base64.b64decode(inidata_voiceCH.content)
 						file_data_voiceCH = file_data_voiceCH.decode('utf-8')
 						inputData_voiceCH = file_data_voiceCH.split('\n')
@@ -1463,7 +1463,7 @@ while True:
 
 						result_voiceCH = '\n'.join(inputData_voiceCH)
 
-						contents = repo.get_contents("test_setting1.ini")
+						contents = repo.get_contents("test_setting.ini")
 						repo.update_file(contents.path, "test_setting", result_voiceCH, contents.sha)
 
 					await JointheVC(voice_channel, channel)
@@ -1981,7 +1981,7 @@ while True:
 			################ 공지확인, 입력 및 삭제 ################ 
 
 			if message.content == command[18]:
-				notice_initdata = repo.get_contents("notice1.ini")
+				notice_initdata = repo.get_contents("notice.ini")
 				notice = base64.b64decode(notice_initdata.content)
 				notice = notice.decode('utf-8')
 				if notice != '' :
@@ -1999,12 +1999,12 @@ while True:
 			if message.content.startswith(command[18] + ' '):
 				tmp_sayMessage = message.content
 				sayMessage = tmp_sayMessage[len(command[18])+1:]
-				contents = repo.get_contents("notice1.ini")
+				contents = repo.get_contents("notice.ini")
 				repo.update_file(contents.path, "notice 등록", sayMessage, contents.sha)
 				await client.get_channel(channel).send( '< 공지 등록완료 >', tts=False)
 			
 			if message.content == command[18] + '삭제':
-				contents = repo.get_contents("notice1.ini")
+				contents = repo.get_contents("notice.ini")
 				repo.update_file(contents.path, "notice 삭제", '', contents.sha)
 				await client.get_channel(channel).send( '< 공지 삭제완료 >', tts=False)
 
