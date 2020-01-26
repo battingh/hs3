@@ -145,7 +145,7 @@ def init():
 	file_data1 = file_data1.decode('utf-8')
 	inputData = file_data1.split('\n')
 
-	command_inidata = repo.get_contents("command.ini")
+	command_inidata = repo.get_contents("command1.ini")
 	file_data4 = base64.b64decode(command_inidata.content)
 	file_data4 = file_data4.decode('utf-8')
 	command_inputData = file_data4.split('\n')
